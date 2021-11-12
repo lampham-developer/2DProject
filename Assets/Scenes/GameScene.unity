@@ -1220,13 +1220,14 @@ GameObject:
   - component: {fileID: 433192023}
   - component: {fileID: 433192022}
   - component: {fileID: 433192021}
+  - component: {fileID: 433192024}
   m_Layer: 5
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &433192020
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1329,6 +1330,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433192019}
   m_CullTransparentMesh: 1
+--- !u!114 &433192024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433192019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 623712990}
+          m_TargetAssemblyTypeName: PlayerMovementScript, Assembly-CSharp
+          m_MethodName: moveRight
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 623712990}
+          m_TargetAssemblyTypeName: PlayerMovementScript, Assembly-CSharp
+          m_MethodName: cancelMove
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &466306832
 GameObject:
   m_ObjectHideFlags: 0
@@ -2067,13 +2113,14 @@ GameObject:
   - component: {fileID: 614577033}
   - component: {fileID: 614577032}
   - component: {fileID: 614577031}
+  - component: {fileID: 614577034}
   m_Layer: 5
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &614577030
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2176,6 +2223,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 614577029}
   m_CullTransparentMesh: 1
+--- !u!114 &614577034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614577029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 623712990}
+          m_TargetAssemblyTypeName: PlayerMovementScript, Assembly-CSharp
+          m_MethodName: moveLeft
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 623712990}
+          m_TargetAssemblyTypeName: PlayerMovementScript, Assembly-CSharp
+          m_MethodName: cancelMove
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &623712990 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8795827073365092826, guid: 0b5a0880027279245b9afb2dd61e5508, type: 3}
+  m_PrefabInstance: {fileID: 1337507492}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6525df53d83e30142b7b1a4f056377f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &774204855
 GameObject:
   m_ObjectHideFlags: 0
@@ -15546,10 +15649,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8795827071589711757, guid: 0b5a0880027279245b9afb2dd61e5508, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -15562,14 +15661,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 9282f50d20f2a394ca3d3462fbc159cf, type: 3}
     - target: {fileID: 8795827073365092826, guid: 0b5a0880027279245b9afb2dd61e5508, type: 3}
       propertyPath: runSpeed
       value: 250
@@ -15658,14 +15749,6 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: bec9c69fddf61574b90522cfd43fa57c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b5a0880027279245b9afb2dd61e5508, type: 3}
 --- !u!4 &1338137171 stripped

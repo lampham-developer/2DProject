@@ -15,7 +15,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    void Shoot(){
+    public void Shoot(){
         SoundController.SoundControllerSingleton.playSound(SoundController.FIRE_SOUND);
         Instantiate(sparkPrefab, shootPoint.position, shootPoint.rotation);
     }

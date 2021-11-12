@@ -63,7 +63,6 @@ public class OpossumScript : MonoBehaviour
 
     void OnTriggerEnter2D (Collider2D hitInfo)
 	{
-        Debug.Log(hitInfo.name);
         if(hitInfo){
             CharacterController2D player = hitInfo.transform.GetComponent<CharacterController2D>();
 			if (player != null)

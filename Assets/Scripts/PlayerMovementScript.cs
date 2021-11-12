@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlayerMovementScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
+public class PlayerMovementScript : MonoBehaviour
 {
 
     public CharacterController2D controller;
@@ -13,6 +13,9 @@ public class PlayerMovementScript : MonoBehaviour, IPointerDownHandler, IPointer
     bool isJumping = false;
     bool isCrouching = false;
     public Animator animator;
+
+    public bool isMovingLeft = false;
+    public bool isMoving = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +27,11 @@ public class PlayerMovementScript : MonoBehaviour, IPointerDownHandler, IPointer
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         
+        moveByButton();
 
         if(Input.GetButtonDown("Jump")){
-            isJumping = true;
-            animator.SetBool("isJumping", true);
+            jump();
         }
 
         if(Input.GetButtonDown("Crouch")){
@@ -44,6 +46,7 @@ public class PlayerMovementScript : MonoBehaviour, IPointerDownHandler, IPointer
 //move the character
     void FixedUpdate()
     {
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         controller.Move(horizontalMove * Time.fixedDeltaTime, isCrouching, isJumping);
     }
 
@@ -58,20 +61,28 @@ public class PlayerMovementScript : MonoBehaviour, IPointerDownHandler, IPointer
         animator.SetBool("isCrouching", crouching);
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        
+    public void moveByButton(){
+        if(isMovingLeft && isMoving) horizontalMove = -1 * runSpeed;
+        else if((!isMovingLeft && isMoving)) horizontalMove =  runSpeed;
     }
 
-    public void OnPointerUp(PointerEventData eventData)
-    {
-
+    public void moveLeft(){
+        isMoving = true;
+        isMovingLeft = true;
     }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-
+    public void moveRight(){
+        isMoving = true;
+        isMovingLeft =  false;
     }
 
-    public void OnPointerEnter(PointerEventData eventData) { }
+    public void cancelMove(){
+        isMoving = false;
+        horizontalMove = 0f;
+    } 
+
+    public void jump(){
+        isJumping = true;
+            animator.SetBool("isJumping", true);
+    }
 }
