@@ -17,7 +17,6 @@ public class OpossumScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         StartCoroutine(Move());
     }
 
@@ -46,15 +45,23 @@ public class OpossumScript : MonoBehaviour
 
     IEnumerator Move(){
       while(true) {
-            rb.velocity = transform.right * -speed;
+            
+            if(goingLeft){
+                rb.velocity = transform.right * -speed;
+                transform.localScale = new Vector3(-15f,15f,1f);
+            }else{
+                rb.velocity = transform.right * speed;
+                transform.localScale = new Vector3(15f,15f,1f);
+            }
+
            yield return new WaitForSeconds(timePosition);
-           transform.Rotate(0f, 180f, 0f);
            goingLeft = !goingLeft;
         }
     } 
 
     void OnTriggerEnter2D (Collider2D hitInfo)
 	{
+        Debug.Log(hitInfo.name);
         if(hitInfo){
             CharacterController2D player = hitInfo.transform.GetComponent<CharacterController2D>();
 			if (player != null)

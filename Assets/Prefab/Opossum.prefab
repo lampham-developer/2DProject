@@ -147,7 +147,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -168,7 +168,7 @@ MonoBehaviour:
   health: 20
   deathEffect: {fileID: 1988572897737159854, guid: 026a1b39f39268f4d914257d5950b114, type: 3}
   speed: 10
-  timePosition: 2
+  timePosition: 4
   rb: {fileID: 3846950173398787223}
   goingLeft: 1
   impactSound: {fileID: 3357822462461625705}
