@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class PlayerMovementScript : MonoBehaviour
+public class PlayerMovementScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
     public CharacterController2D controller;
@@ -56,4 +57,21 @@ public class PlayerMovementScript : MonoBehaviour
     {
         animator.SetBool("isCrouching", crouching);
     }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+
+    }
+
+    public void OnPointerEnter(PointerEventData eventData) { }
 }

@@ -154,14 +154,13 @@ public class CharacterController2D : MonoBehaviour
 		transform.Rotate(0f, 180f, 0f);
 	}
 
-	public async void Die(){
+	public void Die(){
 		//StartCoroutine(showMenu());
 		if(gameObject != null){
 			SoundController.SoundControllerSingleton.playSound(SoundController.DEATH_SOUND);
 			GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
 			Destroy(gameObject);
         	Destroy(effect, 1f);
-			Task.Delay(800);
 			GameController.ControllerSingleton.endGame();
 		}
 	}
