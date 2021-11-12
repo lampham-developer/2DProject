@@ -24,14 +24,8 @@ public class CharacterController2D : MonoBehaviour
 	private Vector3 m_Velocity = Vector3.zero;
 
 	public GameObject deathEffect;
-	public AudioSource jumpSound;
-	public AudioSource deathSound;
 
-	public int currentScore = 0;
-	public Text scoreText;
-	public Text endScoreText;
-	public GameObject scoreBar;
-	public GameObject gameOverMenu;
+	public static CharacterController2D characterController;
 
 	[Header("Events")]
 	[Space]
@@ -46,9 +40,8 @@ public class CharacterController2D : MonoBehaviour
 
 	private void Awake()
 	{
+		characterController = this;
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
-		
-		currentScore = 0;
 		
 		if (OnLandEvent == null)
 			OnLandEvent = new UnityEvent();
@@ -145,7 +138,7 @@ public class CharacterController2D : MonoBehaviour
 			// Add a vertical force to the player.
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-			jumpSound.Play();
+			SoundController.SoundControllerSingleton.playSound(SoundController.JUMP_SOUND);
 		}
 	}
 
@@ -161,27 +154,15 @@ public class CharacterController2D : MonoBehaviour
 		transform.Rotate(0f, 180f, 0f);
 	}
 
-	async public void Die(){
+	public async void Die(){
 		//StartCoroutine(showMenu());
 		if(gameObject != null){
-			deathSound.Play();
-			await Task.Delay(1);
+			SoundController.SoundControllerSingleton.playSound(SoundController.DEATH_SOUND);
 			GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
 			Destroy(gameObject);
         	Destroy(effect, 1f);
-			showMenu();
+			Task.Delay(800);
+			GameController.ControllerSingleton.endGame();
 		}
-	}
-
-	public void addScore(int score){
-		currentScore += score;
-		scoreText.text = currentScore.ToString();
-	}
-
-	async void showMenu(){
-		await Task.Delay(1000);
-		endScoreText.text = currentScore.ToString();
-		gameOverMenu.SetActive(true);
-		scoreBar.SetActive(false);
 	}
 }

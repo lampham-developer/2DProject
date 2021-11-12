@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
 public class OpossumScript : MonoBehaviour
 {
@@ -11,8 +12,7 @@ public class OpossumScript : MonoBehaviour
     public int timePosition = 2;
     public Rigidbody2D rb;
     public bool goingLeft = true;
-    public AudioSource impactSound;
-    public GameObject character;
+    public Transform spawnPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -31,16 +31,18 @@ public class OpossumScript : MonoBehaviour
 
         if (health <= 0)
 		{
-            character.GetComponent<CharacterController2D>().addScore(10);
+            GameController.ControllerSingleton.addScore(10);
 			Die();
 		}
     }
 
-    void Die(){
-        impactSound.Play();
+    async void Die(){
+        GameController.ControllerSingleton.reSpawnOpossum(spawnPoint);
         GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
 		Destroy(gameObject);
         Destroy(effect, 0.4f);
+        await Task.Delay(200);
+        SoundController.SoundControllerSingleton.playSound(SoundController.DEATH_SOUND);
     }
 
     IEnumerator Move(){

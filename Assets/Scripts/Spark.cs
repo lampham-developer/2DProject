@@ -22,6 +22,7 @@ public class Spark : MonoBehaviour
             OpossumScript opossum = hitInfo.transform.GetComponent<OpossumScript>();
 			if (opossum != null)
 			{
+                SoundController.SoundControllerSingleton.playSound(SoundController.HIT_SOUND);
 				opossum.TakeDamage(damage);
 			}
         }

@@ -6,7 +6,6 @@ public class Weapon : MonoBehaviour
 {
     public Transform shootPoint;
     public GameObject sparkPrefab;
-    public AudioSource shootSound;
 
     // Update is called once per frame
     void Update()
@@ -17,7 +16,7 @@ public class Weapon : MonoBehaviour
     }
 
     void Shoot(){
-        shootSound.Play();
+        SoundController.SoundControllerSingleton.playSound(SoundController.FIRE_SOUND);
         Instantiate(sparkPrefab, shootPoint.position, shootPoint.rotation);
     }
 }
