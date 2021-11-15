@@ -16,10 +16,8 @@ public class GameController : MonoBehaviour
     public int currentScore = 0;
 	public Text scoreText;
 	public Text endScoreText;
-	public GameObject scoreBar;
+	public GameObject gamePanel;
 	public GameObject gameOverMenu;
-
-    public AudioSource deathSound;
     
     bool isGameEnded = false;
     // Start is called before the first frame update
@@ -65,7 +63,7 @@ public class GameController : MonoBehaviour
 		await Task.Delay(1000);
 		endScoreText.text = currentScore.ToString();
 		gameOverMenu.SetActive(true);
-		scoreBar.SetActive(false);
+		gamePanel.SetActive(false);
 	}
 
 }
