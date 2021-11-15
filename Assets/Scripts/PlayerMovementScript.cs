@@ -6,9 +6,10 @@ using UnityEngine.EventSystems;
 public class PlayerMovementScript : MonoBehaviour
 {
 
+    public static PlayerMovementScript PlayerMovementSingleton;
     public CharacterController2D controller;
     public float horizontalMove = 0f;
-    public float runSpeed = 1000f;
+    public static float runSpeed = 250f;
 
     bool isJumping = false;
     bool isCrouching = false;
@@ -20,7 +21,7 @@ public class PlayerMovementScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        PlayerMovementSingleton = this;
     }
 
     // Update is called once per frame

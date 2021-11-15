@@ -5,7 +5,10 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public Transform shootPoint;
+    public Transform shootUpPoint;
     public GameObject sparkPrefab;
+
+    public static bool isShootingUp = false;
 
     // Update is called once per frame
     void Update()
@@ -13,10 +16,24 @@ public class Weapon : MonoBehaviour
         if(Input.GetButtonDown("Fire1")){
             Shoot();
         }
+
+        if(Input.GetButtonDown("ShootUp")){
+            isShootingUp = true;
+        }
+
+        if(Input.GetButtonUp("ShootUp")){
+            isShootingUp = false;
+        }
     }
 
     public void Shoot(){
         SoundController.SoundControllerSingleton.playSound(SoundController.FIRE_SOUND);
-        Instantiate(sparkPrefab, shootPoint.position, shootPoint.rotation);
+        
+        if(isShootingUp) {
+            Instantiate(sparkPrefab, shootUpPoint.position, shootPoint.rotation);
+        }
+        else{
+            Instantiate(sparkPrefab, shootPoint.position, shootPoint.rotation);
+        }
     }
 }

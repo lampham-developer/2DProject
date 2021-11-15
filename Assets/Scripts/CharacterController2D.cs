@@ -38,6 +38,10 @@ public class CharacterController2D : MonoBehaviour
 	public BoolEvent OnCrouchEvent;
 	private bool m_wasCrouching = false;
 
+	public UnityEvent OnBossEvent;
+	public Transform bossEventPosition;
+	private bool isBossAwake = false;
+
 	private void Awake()
 	{
 		characterController = this;
@@ -48,6 +52,9 @@ public class CharacterController2D : MonoBehaviour
 
 		if (OnCrouchEvent == null)
 			OnCrouchEvent = new BoolEvent();
+
+			if (OnBossEvent == null)
+			OnBossEvent = new UnityEvent();
 	}
 
 	private void FixedUpdate()
@@ -66,6 +73,13 @@ public class CharacterController2D : MonoBehaviour
 				if (!wasGrounded)
 					OnLandEvent.Invoke();
 			}
+		}
+
+		if(gameObject.transform.position.x > bossEventPosition.position.x){
+			if(!isBossAwake){
+				OnBossEvent.Invoke();
+			}
+			isBossAwake = true;
 		}
 	}
 

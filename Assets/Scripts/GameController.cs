@@ -25,6 +25,9 @@ public class GameController : MonoBehaviour
     private void Awake() {
         ControllerSingleton = this;
 
+        gamePanel.SetActive(true);
+		gameOverMenu.SetActive(false);
+
         currentScore = 0;
         isGameEnded = false;
 

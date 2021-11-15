@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameOverMenuScript : MonoBehaviour
+public class GameMenuScript : MonoBehaviour
 {
     public void backToMainMenu(){
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
@@ -12,4 +12,12 @@ public class GameOverMenuScript : MonoBehaviour
     public void restartGame(){
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
+
+	public void resumeGame(){
+		Time.timeScale = 1;
+	}
+
+	public void pauseGame(){
+        Time.timeScale = 0;
+    }
 }

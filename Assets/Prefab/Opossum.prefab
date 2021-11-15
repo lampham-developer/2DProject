@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 948608367913493544}
   - component: {fileID: 644289076175777341}
   - component: {fileID: 1367825265112848519}
+  - component: {fileID: 4086083353594720203}
   m_Layer: 0
   m_Name: Opossum
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,9 +172,8 @@ MonoBehaviour:
   timePosition: 2
   rb: {fileID: 948608367913493544}
   goingLeft: 1
-  impactSound: {fileID: 1367825265112848519}
-  character: {fileID: 8795827073365092819, guid: 0b5a0880027279245b9afb2dd61e5508, type: 3}
   spawnPoint: {fileID: 0}
+  enemyRespawn: {fileID: 4086083353594720203}
 --- !u!82 &1367825265112848519
 AudioSource:
   m_ObjectHideFlags: 0
@@ -270,3 +270,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4086083353594720203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5283789152652911380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd35dc2d65919d48b7097db76f3a4d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
