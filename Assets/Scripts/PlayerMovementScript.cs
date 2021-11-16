@@ -9,7 +9,7 @@ public class PlayerMovementScript : MonoBehaviour
     public static PlayerMovementScript PlayerMovementSingleton;
     public CharacterController2D controller;
     public float horizontalMove = 0f;
-    public static float runSpeed = 250f;
+    static float runSpeed = 250f;
 
     bool isJumping = false;
     bool isCrouching = false;

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
+using Cinemachine;
 
 public class GameController : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class GameController : MonoBehaviour
 	public Text endScoreText;
 	public GameObject gamePanel;
 	public GameObject gameOverMenu;
+
+    public CinemachineVirtualCamera myCinemachine;
+    public Transform bossEventPoint;
     
     bool isGameEnded = false;
     // Start is called before the first frame update
@@ -68,5 +72,10 @@ public class GameController : MonoBehaviour
 		gameOverMenu.SetActive(true);
 		gamePanel.SetActive(false);
 	}
+
+    public void changeToBossCamera(){
+        myCinemachine.m_Follow = bossEventPoint;
+        myCinemachine.m_Lens.OrthographicSize = 40;
+    }
 
 }

@@ -167,6 +167,6 @@ MonoBehaviour:
   health: 200
   deathEffect: {fileID: 331392778160139810, guid: 5744a4cb9a4885d4e84ee7a749e1a42b, type: 3}
   speed: 20
-  timePosition: 3
+  timePosition: 5
   rb: {fileID: 8764069015196165125}
   goingLeft: 1
