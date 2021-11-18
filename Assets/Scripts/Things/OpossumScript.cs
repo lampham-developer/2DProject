@@ -14,13 +14,10 @@ public class OpossumScript : MonoBehaviour
     public bool goingLeft = true;
     public Transform spawnPoint;
 
-    public HealthBarScript healthBar;
-
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(Move());
-        healthBar.setHealthBar(health);
     }
 
     // Update is called once per frame
@@ -31,7 +28,6 @@ public class OpossumScript : MonoBehaviour
 
     public void TakeDamage(int damage){
         health -= damage;
-        healthBar.setHealth(health);
 
         if (health <= 0)
 		{
