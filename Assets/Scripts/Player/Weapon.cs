@@ -36,4 +36,8 @@ public class Weapon : MonoBehaviour
             Instantiate(sparkPrefab, shootPoint.position, shootPoint.rotation);
         }
     }
+
+    public void ShootUp(){
+        isShootingUp = !isShootingUp;
+    }
 }

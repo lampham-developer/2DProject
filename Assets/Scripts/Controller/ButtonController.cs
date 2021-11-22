@@ -5,17 +5,16 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 
-public class NewBehaviourScript : MonoBehaviour
+public class ButtonController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+public GameObject imageObject;
+
+    public void setButtonColor(){
+        if(Weapon.isShootingUp){
+            imageObject.GetComponent<Image>().color = Color.blue;
+        }else{
+            imageObject.GetComponent<Image>().color = Color.white;
+        }
     }
 }
