@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GameMenuScript : MonoBehaviour
 {
+
+	public static GameMenuScript GameMenuSingleton;
+
+	private void Start() {
+		GameMenuSingleton = this;
+	}
+
     public void backToMainMenu(){
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
 	}
@@ -14,10 +21,10 @@ public class GameMenuScript : MonoBehaviour
 	}
 
 	public void resumeGame(){
-		Time.timeScale = 1;
+		GameController.ControllerSingleton.resumeGame();
 	}
 
 	public void pauseGame(){
-        Time.timeScale = 0;
+        GameController.ControllerSingleton.pauseGame();
     }
 }

@@ -23,11 +23,13 @@ public class GameController : MonoBehaviour
     public TMP_Text endGameText;
 	public GameObject gamePanel;
 	public GameObject gameOverMenu;
+    public GameObject gamePausePanel;
 
     public CinemachineVirtualCamera myCinemachine;
     public Transform bossEventPoint;
     
     public bool isGameEnded = false;
+    bool isGamePaused = false;
 
     public UnityEvent FinalBossEvent;
     int egaleCount = 0;
@@ -57,7 +59,13 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            if(isGamePaused){
+                resumeGame();
+            }else{
+                pauseGame();
+            }
+        }
     }
 
     public void spawnOpossum(Transform spawnPoint){
@@ -109,6 +117,20 @@ public class GameController : MonoBehaviour
         if(egaleCount >= 2){
             FinalBossEvent.Invoke();
         }
+    }
+
+    public void pauseGame(){
+        gamePanel.SetActive(false);
+        gamePausePanel.SetActive(true);
+        Time.timeScale = 0;
+        isGamePaused = true;
+    }
+
+    public void resumeGame(){
+        gamePanel.SetActive(true);
+        gamePausePanel.SetActive(false);
+        Time.timeScale = 1;
+        isGamePaused = false;
     }
 
 }
