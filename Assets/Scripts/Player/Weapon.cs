@@ -10,6 +10,10 @@ public class Weapon : MonoBehaviour
 
     public static bool isShootingUp = false;
 
+    private void Start() {
+        isShootingUp = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
