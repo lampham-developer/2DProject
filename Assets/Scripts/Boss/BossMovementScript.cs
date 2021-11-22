@@ -15,6 +15,8 @@ public class BossMovementScript : MonoBehaviour
     float speed = 10f;
     float attackRange = 10f;
     float health = 1000;
+    float speedUpHealth = 1000;
+    float speedUpStep = 100;
 
 	bool isFlipped = false;
     bool isMoving = false;
@@ -23,7 +25,7 @@ public class BossMovementScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        speedUpHealth -= speedUpStep;
     }
 
     // Update is called once per frame
@@ -88,10 +90,11 @@ public class BossMovementScript : MonoBehaviour
 		    {
                 GameController.ControllerSingleton.addScore(10000);
 			    Die();
-		    }else if(health < 100){
-                speed = 15f;
-            }else if(health < 500){
-                speed = 12f;
+		    }else{
+                if(health <= speedUpHealth){
+                    speedUpHealth -= speedUpStep;
+                    speed = speed * 1.1f;
+                }
             }
 
             
